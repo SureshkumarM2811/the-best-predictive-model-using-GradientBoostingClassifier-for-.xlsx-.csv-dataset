@@ -29,8 +29,7 @@ print("prediction=",y_predict)
 
 
 #evaluation process
-print("Confusion Matrix = ")
-print(confusion_matrix(y_test, y_predict))
+print("Confusion Matrix = ",confusion_matrix(y_test, y_predict))
 print(".....Classification Report.....")
 print(classification_report(y_test,y_predict))
 print("Accuracy score = ",accuracy_score(y_test,y_predict))
