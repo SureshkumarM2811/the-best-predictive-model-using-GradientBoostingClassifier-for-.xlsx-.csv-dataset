@@ -1,0 +1,36 @@
+# import libraries
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import classification_report, confusion_matrix,accuracy_score
+from sklearn.ensemble import GradientBoostingClassifier 
+
+
+#data importing
+traindata=pd.read_excel("file path.xlsx")
+testdata=pd.read_excel("file path.xlsx")
+#c1,c2...c13,label represent column name
+x_train=traindata[['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12','c13']]
+y_train=traindata['label']
+x_test=testdata[['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12','c13']]
+y_test=testdata['label']
+
+
+#data preprocessing
+scaler = MinMaxScaler()
+x_train = scaler.fit_transform(x_train)
+x_test = scaler.transform(x_test)
+
+
+#GBclassification process
+gb_classifier=GradientBoostingClassifier(learning_rate=0.1, max_depth=8, max_features=0.5, min_samples_leaf=4, min_samples_split=17, n_estimators=100, subsample=0.75000000000000003)
+gb_classifier.fit(x_train,y_train)
+y_predict=gb_classifier.predict(x_test)
+print("prediction=",y_predict)
+
+
+#evaluation process
+print("Confusion Matrix = ")
+print(confusion_matrix(y_test, y_predict))
+print(".....Classification Report.....")
+print(classification_report(y_test,y_predict))
+print("Accuracy score = ",accuracy_score(y_test,y_predict))
