@@ -8,10 +8,10 @@ from sklearn.ensemble import GradientBoostingClassifier
 #data importing
 traindata=pd.read_excel("file path.xlsx")
 testdata=pd.read_excel("file path.xlsx")
-#c1,c2...c13,label represent column name
-x_train=traindata[['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12','c13']]
+#c1...cn,label represent column name
+x_train=traindata[['c1'...cn']]
 y_train=traindata['label']
-x_test=testdata[['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12','c13']]
+x_test=testdata[['c1'...'cn']]
 y_test=testdata['label']
 
 
